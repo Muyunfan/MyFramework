@@ -50,10 +50,7 @@
 
         <service android:name="com.amap.api.location.APSService"></service>
 
-        <activity android:name="com.muyunfan.fw.accountmodule.ui.LoginActivity" />
-        <activity android:name="com.muyunfan.fw.accountmodule.ui.ChangePswActivity" />
-        <activity android:name="com.muyunfan.fw.accountmodule.ui.ResetPswActivity" />
-        <activity android:name="com.muyunfan.fw.accountmodule.ui.RegisterActivity" />
+
         <activity android:name="com.muyunfan.fw.mainmodule.ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -61,12 +58,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="com.muyunfan.fw.taskmodule.ui.TaskListActivity" />
-        <activity android:name="com.muyunfan.fw.accountmodule.ui.ScanActivity" />
-        <activity android:name="com.muyunfan.fw.accountmodule.ui.UserTypeActivity" />
-        <activity android:name="com.muyunfan.fw.taskmodule.ui.TaskDetailActivity" />
-        <activity android:name="com.muyunfan.fw.taskmodule.ui.AddressActivity"></activity>
-        <activity android:name="com.muyunfan.fw.accountmodule.ui.AboutActivity"></activity>
 
         <!-- Required SDK核心功能-->
         <activity
