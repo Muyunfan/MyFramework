@@ -134,24 +134,24 @@ presenter: 业务处理，和Controller的作用是一样的，用于业务处�
 项目结构采用模块话结构：basemodule、widget、othermodule...
 
 basemodule：项目核心模块
-    app：基类Activity、基类Fragment、Application
-    bean：基类数据请求模型、EventBus数据模型、other数据模型
-    cache：应用数据缓存
-    code：APIUrl
-    model：基类数据请求模型
-    network：http接口封装、基类request、otherRequest
-    presenter：基类ActivityPresenter、基类FragmentPresenter
+- app：基类Activity、基类Fragment、Application
+- bean：基类数据请求模型、EventBus数据模型、other数据模型
+- cache：应用数据缓存
+- code：APIUrl
+- model：基类数据请求模型
+- network：http接口封装、基类request、otherRequest
+- presenter：基类ActivityPresenter、基类FragmentPresenter
 
 widget：通用工具模块
-    adapter：各类适配器
-    amap：高德地图(根据需要调整LBS)
-    bar：状态栏背景
-    dialog：通用对话框（建议只这里只放通用版本，模块独有的dialog请在各自的模块中再添加一个widget/dialog）
-    push:推送工具(根据需要调整推送SDK)
-    recyclerview：这是使用了大牛的框架，并进行了微调，是对RecyclerView的封装使用，可以进行刷新、上拉加载、删除等list操作
-    scan：二维码扫码
-    utils：各类通用工具：图片压缩、Empji过滤、Gson封装、TimeCount等等...(根据需要添加，最好是分类添加，避免使用时花时间查找工具类)
-    view：自定义View
+-  adapter：各类适配器
+-  amap：高德地图(根据需要调整LBS)
+-  bar：状态栏背景
+-  dialog：通用对话框（建议只这里只放通用版本，模块独有的dialog请在各自的模块中再添加一个widget/dialog）
+-  push:推送工具(根据需要调整推送SDK)
+-  recyclerview：这是使用了大牛的框架，并进行了微调，是对RecyclerView的封装使用，可以进行刷新、上拉加载、删除等list操作
+-  scan：二维码扫码
+-  utils：各类通用工具：图片压缩、Empji过滤、Gson封装、TimeCount等等...(根据需要添加，最好是分类添加，避免使用时花时间查找工具类)
+-  view：自定义View
 
 othermodule：各个业务模块需要独立开来，可以引用核心模块、通用模块，尽量避免各个业务模块之间的相互调用（页面启动除外）
 
