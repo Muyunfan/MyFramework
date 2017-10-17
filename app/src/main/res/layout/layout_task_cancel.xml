@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="0.5dp"
+    android:background="@color/color_white"
+    android:padding="@dimen/content_padding_15">
+
+    <TextView
+        android:id="@+id/tv_no_label"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="维修单号"
+        android:textColor="@color/color_gray"
+        android:textSize="@dimen/text_size_12" />
+
+    <TextView
+        android:id="@+id/tv_no"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="4.5dp"
+        android:layout_toLeftOf="@+id/tv_date"
+        android:layout_toRightOf="@+id/tv_no_label"
+        android:textColor="@color/color_gray"
+        android:textSize="@dimen/text_size_12" />
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:textColor="@color/color_gray"
+        android:textSize="@dimen/text_size_12" />
+
+    <ImageView
+        android:id="@+id/iv_picture"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_below="@+id/tv_no_label"
+        android:layout_marginTop="@dimen/content_padding_15"
+        android:scaleType="fitXY"
+        android:src="@mipmap/pic_default" />
+
+    <TextView
+        android:id="@+id/tv_userRemark"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_below="@+id/tv_no_label"
+        android:layout_marginLeft="@dimen/content_padding_10"
+        android:layout_marginTop="@dimen/content_padding_15"
+        android:layout_toRightOf="@+id/iv_picture"
+        android:textColor="@color/color_gray"
+        android:textSize="@dimen/text_size_15" />
+
+    <TextView
+        android:layout_width="50dp"
+        android:layout_height="20dp"
+        android:text="已取消"
+        android:gravity="center"
+        android:layout_below="@+id/tv_userRemark"
+        android:layout_alignParentRight="true"
+        android:background="@drawable/bg_gray_corner_radius"
+        android:textColor="@color/color_gray"
+        android:textSize="@dimen/text_size_11" />
+
+</RelativeLayout>

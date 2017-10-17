@@ -1,0 +1,24 @@
+<resources>
+    <string name="app_name">嘟会修</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="icon_location">&#xe61a;</string>
+    <string name="icon_back">&#xe61b;</string>
+    <string name="icon_close">&#xe61c;</string>
+    <string name="icon_detail_location">&#xe61d;</string>
+    <string name="icon_detail_phone">&#xe61e;</string>
+    <string name="icon_star">&#xe61f;</string>
+    <string name="icon_user_normal">&#xe620;</string>
+    <string name="icon_scan_order">&#xe621;</string>
+    <string name="icon_user_normal_flag">&#xe622;</string>
+    <string name="icon_manager_normal">&#xe623;</string>
+    <string name="icon_setting_normal">&#xe624;</string>
+    <string name="icon_setting_selected">&#xe625;</string>
+    <string name="icon_selected">&#xe626;</string>
+    <string name="icon_manager_selected">&#xe627;</string>
+    <string name="icon_new_task">&#xe628;</string>
+    <string name="icon_auth">&#xe629;</string>
+    <string name="icon_quick_new_task">&#xe62a;</string>
+</resources>
