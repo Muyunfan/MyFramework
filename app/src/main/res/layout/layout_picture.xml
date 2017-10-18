@@ -9,6 +9,6 @@
         android:layout_width="60dp"
         android:layout_height="60dp"
         android:scaleType="fitXY"
-        android:src="@mipmap/pic_default"
+        android:src="@mipmap/ic_launcher"
         android:visibility="visible" />
 </LinearLayout>

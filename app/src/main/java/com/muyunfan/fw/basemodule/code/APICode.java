@@ -25,4 +25,5 @@ public class APICode {
 
     public static final String LOGIN = "Account/Login";         //登陆
 
+    public static final String GET_STUDENTS = "Account/GetStudents";         //登陆
 }

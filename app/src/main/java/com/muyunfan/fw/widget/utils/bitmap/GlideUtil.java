@@ -20,8 +20,6 @@ import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 
 import static com.muyunfan.fw.R.mipmap.ic_launcher;
-import static com.muyunfan.fw.R.mipmap.pic_default;
-import static com.muyunfan.fw.R.mipmap.pic_head_default;
 
 /*
  * 类描述：
@@ -38,7 +36,7 @@ public class GlideUtil {
     public static void loadPathImage(String filePath, ImageView imageView) {
 
         if (CheckUtil.isEmpty(filePath)) {
-            imageView.setImageResource(pic_default);
+            imageView.setImageResource(ic_launcher);
         } else {
             Glide.with(mContext)
                     .load(filePath)
@@ -63,11 +61,11 @@ public class GlideUtil {
     public static void loadImage(String url, ImageView imageView) {
 
         if (CheckUtil.isEmpty(url)) {
-            imageView.setImageResource(pic_default);
+            imageView.setImageResource(ic_launcher);
         } else {
             Glide.with(mContext)
                     .load(url)
-                    .error(pic_default)
+                    .error(ic_launcher)
                     .diskCacheStrategy(DiskCacheStrategy.RESULT)
                     .into(imageView);
         }
@@ -84,7 +82,7 @@ public class GlideUtil {
     public static void loadRoundImage(String url, ImageView imageView, int round) {
 
         if (CheckUtil.isEmpty(url)) {
-            imageView.setImageResource(pic_default);
+            imageView.setImageResource(ic_launcher);
         } else {
             Glide.with(mContext)
                     .load(url)
@@ -97,8 +95,8 @@ public class GlideUtil {
     public static void loadCircleImage(String url, ImageView imageView) {
         Glide.with(mContext)
                 .load(url)
-                .placeholder(pic_default)
-                .error(pic_default)
+                .placeholder(ic_launcher)
+                .error(ic_launcher)
                 .diskCacheStrategy(DiskCacheStrategy.ALL)
                 .transform(new GlideCircleTransform(mContext))
                 .into(imageView);
@@ -120,7 +118,7 @@ public class GlideUtil {
             Glide.with(context)
                     .load(url)
                     .diskCacheStrategy(DiskCacheStrategy.RESULT)
-                    .error(pic_head_default)
+                    .error(ic_launcher)
                     .transform(new GlideCircleTransform(mContext))
                     .into(imageView);
         }

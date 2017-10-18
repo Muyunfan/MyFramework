@@ -2,11 +2,15 @@ package com.muyunfan.fw.basemodule.network;
 
 import android.util.Log;
 
+import com.muyunfan.fw.basemodule.bean.BaseResult;
 import com.muyunfan.fw.basemodule.bean.EventCenter;
+import com.muyunfan.fw.basemodule.bean.account.Student;
+import com.muyunfan.fw.basemodule.bean.account.StudentInList;
 import com.muyunfan.fw.basemodule.cache.AppCache;
 import com.muyunfan.fw.basemodule.code.APICode;
 import com.muyunfan.fw.basemodule.code.AccountCode;
 import com.muyunfan.fw.basemodule.network.okhttp.OkHttpUtils;
+import com.muyunfan.fw.mainmodule.model.MainModel;
 import com.muyunfan.fw.widget.utils.common.CheckUtil;
 import com.muyunfan.fw.widget.utils.common.GsonUtil;
 import com.muyunfan.fw.widget.utils.common.LogUtil;
@@ -16,7 +20,9 @@ import com.muyunfan.fw.basemodule.network.okhttp.builder.PostStringBuilder;
 import org.greenrobot.eventbus.EventBus;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import okhttp3.Call;
 import okhttp3.MediaType;
@@ -298,6 +304,30 @@ public class BaseRequest {
         @Override
         public void run() {
             super.run();
+            /**
+             * 这是测试demo
+             */
+            if (MainModel.GET_STUDENTS.equals(requestCode)) {
+                StudentInList studentInList = new StudentInList();
+                studentInList.students = new ArrayList<>();
+                for (int i = 0; i < 10; i++) {
+                    Student student = new Student();
+                    student.age = 17+i;
+                    student.name = "Wanger"+i;
+                    student.school = "ShangHai"+(i+1)+"zhong";
+                    studentInList.students.add(student);
+                }
+                BaseResult baseResult = new BaseResult();
+                baseResult.code = 0;
+                baseResult.message = "获取数据成功";
+                baseResult.data = studentInList;
+                onResponse.success(requestCode,url,GsonUtil.toJson(baseResult));
+                return;
+            }
+
+            /**
+             * 正式的网络请求
+             */
             PostStringBuilder postStringBuilder = OkHttpUtils.postString();
 
             if (headers != null)

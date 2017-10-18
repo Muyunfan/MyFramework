@@ -2,14 +2,13 @@ package com.muyunfan.fw.basemodule.presenter;
 
 import android.app.Activity;
 
-import com.muyunfan.fw.accountmodule.model.LoginModel;
 import com.muyunfan.fw.basemodule.bean.EventCenter;
 import com.muyunfan.fw.basemodule.code.APICode;
 import com.muyunfan.fw.basemodule.model.BaseModel;
 import com.muyunfan.fw.basemodule.model.ModelCallBack;
-import com.muyunfan.fw.basemodule.network.BaseRequest;
 import com.muyunfan.fw.widget.dialog.ProgressDialog;
 import com.muyunfan.fw.widget.utils.common.TimeCount;
+import com.muyunfan.fw.widget.utils.common.ToastUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -34,6 +33,7 @@ public abstract class BasePresenter <V extends Activity, M extends BaseModel> im
     public void attach(V v) {
         mWeakReference = new WeakReference<V>(v);
         model = createPresenter();
+        model.setModelCallBack(this);
     }
 
     protected abstract M createPresenter();
@@ -73,7 +73,8 @@ public abstract class BasePresenter <V extends Activity, M extends BaseModel> im
     @Override
     public void fail(String error) {
         dismissProgressViewDialog();
-        postEvent(APICode.ERROR + setViewTag(),error);
+//        postEvent(APICode.ERROR + setViewTag(),error);
+        ToastUtil.showShort(error);
     }
 
     protected void postEvent(String code, Object object) {

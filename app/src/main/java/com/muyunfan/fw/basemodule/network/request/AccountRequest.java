@@ -53,4 +53,12 @@ public class AccountRequest extends BaseRequest{
         requestDataByPost(requestCode, APICode.LOGIN, params, mOnResponse);
     }
 
+    /*
+    获取学生信息
+    */
+    public void getStudents(String requestCode){
+        HashMap<String, String> params = new HashMap<String, String>();
+        requestDataByPost(requestCode, APICode.GET_STUDENTS, params, mOnResponse);
+    }
+
 }

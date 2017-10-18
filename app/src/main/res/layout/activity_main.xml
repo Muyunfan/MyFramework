@@ -1,122 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/activity_task_detail"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/color_app">
 
-    <include
-        android:id="@+id/title_bar"
-        layout="@layout/layout_title_bar" />
-
-    <RelativeLayout
-        android:id="@+id/rl_childFragments"
+    <android.support.v4.widget.SwipeRefreshLayout
+        android:id="@+id/refresh"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_above="@+id/ll_bottom_bar"
-        android:layout_below="@+id/title_bar" />
+        android:layout_height="match_parent">
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1px"
-        android:layout_above="@+id/ll_bottom_bar"
-        android:background="@color/color_line" />
-
-    <LinearLayout
-        android:id="@+id/ll_bottom_bar"
-        android:layout_width="match_parent"
-        android:layout_height="48dp"
-        android:layout_alignParentBottom="true"
-        android:background="@color/color_white"
-        android:gravity="center_vertical"
-        android:orientation="horizontal">
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <LinearLayout
-            android:id="@+id/ll_bottom_working"
-            android:layout_width="80dp"
-            android:layout_height="45dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="@drawable/bottom_working_selector" />
-
-            <TextView
-                android:id="@+id/tv_bottom_working"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:gravity="center"
-                android:text="处理中订单"
-                android:textColor="@color/color_dark_gray_blue"
-                android:textSize="@dimen/text_size_10" />
-        </LinearLayout>
-
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <LinearLayout
-            android:id="@+id/ll_bottom_manager"
-            android:layout_width="80dp"
-            android:layout_height="45dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="@drawable/bottom_manager_selector" />
-
-            <TextView
-                android:id="@+id/tv_bottom_manager"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:gravity="center"
-                android:text="任务管理"
-                android:textColor="@color/color_dark_gray_blue"
-                android:textSize="@dimen/text_size_10" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-
-        <LinearLayout
-            android:id="@+id/ll_bottom_setting"
-            android:layout_width="80dp"
-            android:layout_height="45dp"
-            android:gravity="center"
-            android:orientation="vertical">
-
-            <TextView
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:background="@drawable/bottom_setting_selector" />
-
-            <TextView
-                android:id="@+id/tv_bottom_setting"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="设置"
-                android:textColor="@color/color_dark_gray_blue"
-                android:textSize="@dimen/text_size_10" />
-        </LinearLayout>
-
-        <View
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1" />
-    </LinearLayout>
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+    </android.support.v4.widget.SwipeRefreshLayout>
 </RelativeLayout>
