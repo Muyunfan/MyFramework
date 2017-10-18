@@ -54,7 +54,7 @@
 
         <service android:name="com.amap.api.location.APSService" />
 
-        <activity android:name=".mainmodule.ui.MainActivity">
+        <activity android:name="com.muyunfan.fw.mainmodule.ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
