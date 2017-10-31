@@ -54,12 +54,12 @@
 
         <service android:name="com.amap.api.location.APSService" />
 
-        <activity android:name="com.muyunfan.fw.mainmodule.ui.MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+        <activity android:name=".mainmodule.ui.MainActivity">
+            <!--<intent-filter>-->
+                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+                <!--<category android:name="android.intent.category.LAUNCHER" />-->
+            <!--</intent-filter>-->
         </activity>
 
         <!-- Required SDK核心功能 -->
@@ -143,6 +143,14 @@
                 <category android:name="com.muyunfan.fw" />
             </intent-filter>
         </receiver>
+
+        <activity android:name=".mainmodule.ui.AnnotationActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
     </application>
 
 </manifest>

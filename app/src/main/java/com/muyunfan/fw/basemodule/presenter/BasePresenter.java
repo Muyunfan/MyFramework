@@ -14,6 +14,10 @@ import org.greenrobot.eventbus.EventBus;
 
 import java.lang.ref.WeakReference;
 
+import static android.R.attr.data;
+import static android.icu.lang.UCharacter.GraphemeClusterBreak.T;
+import static com.amap.api.mapcore.util.cz.A;
+
 /**
  * 类名称：com.muyunfan.fw.BaseModule.Presenter
  * 类描述：
@@ -23,7 +27,7 @@ import java.lang.ref.WeakReference;
  * 修改时间：2017/5/25.11:09
  * 修改备注：
  */
-public abstract class BasePresenter <V extends Activity, M extends BaseModel> implements ModelCallBack{
+public abstract class BasePresenter<V extends Activity, M extends BaseModel> implements ModelCallBack {
 
     protected final static int PAGE_SIZE = 10;
     protected WeakReference<V> mWeakReference;
@@ -63,18 +67,29 @@ public abstract class BasePresenter <V extends Activity, M extends BaseModel> im
     public abstract void modelCallBackSuccess(String requestCode, Object data);
 
     @Override
-    public void success(String requestCode, Object data) {
-        dismissProgressViewDialog();
-        if(getView()!=null){
-            modelCallBackSuccess(requestCode,data);
+    public void success(final String requestCode, final Object data) {
+        if (getView() != null) {
+            getView().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    dismissProgressViewDialog();
+                    modelCallBackSuccess(requestCode, data);
+                }
+            });
         }
     }
 
     @Override
-    public void fail(String error) {
-        dismissProgressViewDialog();
-//        postEvent(APICode.ERROR + setViewTag(),error);
-        ToastUtil.showShort(error);
+    public void fail(final String error) {
+        if (getView() != null) {
+            getView().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    dismissProgressViewDialog();
+                    ToastUtil.showShort(error);
+                }
+            });
+        }
     }
 
     protected void postEvent(String code, Object object) {

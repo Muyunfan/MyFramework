@@ -9,6 +9,7 @@ import com.muyunfan.fw.basemodule.model.ModelCallBack;
 import com.muyunfan.fw.basemodule.network.BaseRequest;
 import com.muyunfan.fw.widget.dialog.ProgressDialog;
 import com.muyunfan.fw.widget.utils.common.TimeCount;
+import com.muyunfan.fw.widget.utils.common.ToastUtil;
 
 import org.greenrobot.eventbus.EventBus;
 
@@ -62,17 +63,29 @@ public abstract class BaseFPresenter <F extends Fragment, M extends BaseModel> i
     public abstract void modelCallBackSuccess(String requestCode, Object data);
 
     @Override
-    public void success(String requestCode, Object data) {
-        dismissProgressViewDialog();
-        if(getView()!=null){
-            modelCallBackSuccess(requestCode,data);
+    public void success(final String requestCode, final Object data) {
+        if (getView() != null) {
+            getView().getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    dismissProgressViewDialog();
+                    modelCallBackSuccess(requestCode, data);
+                }
+            });
         }
     }
 
     @Override
-    public void fail(String error) {
-        dismissProgressViewDialog();
-        postEvent(APICode.ERROR + setViewTag(),error);
+    public void fail(final String error) {
+        if (getView() != null) {
+            getView().getActivity().runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    dismissProgressViewDialog();
+                    ToastUtil.showShort(error);
+                }
+            });
+        }
     }
 
     protected void postEvent(String code, Object object) {
