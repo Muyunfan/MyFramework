@@ -2,8 +2,8 @@ package com.muyunfan.fw.widget.utils.mobile;
 
 import android.os.Environment;
 
-import com.muyunfan.fw.basemodule.cache.AppCache;
-import com.muyunfan.fw.basemodule.code.APICode;
+import com.muyunfan.fw.core.cache.AppCache;
+import com.muyunfan.fw.core.code.APICode;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;

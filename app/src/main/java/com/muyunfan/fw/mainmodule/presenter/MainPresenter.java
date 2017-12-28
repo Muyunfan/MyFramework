@@ -6,9 +6,9 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.view.View;
 
 import com.muyunfan.fw.R;
-import com.muyunfan.fw.basemodule.bean.account.Student;
-import com.muyunfan.fw.basemodule.bean.account.StudentInList;
-import com.muyunfan.fw.basemodule.presenter.BasePresenter;
+import com.muyunfan.fw.core.bean.account.Student;
+import com.muyunfan.fw.core.bean.account.StudentInList;
+import com.muyunfan.fw.core.presenter.BasePresenter;
 import com.muyunfan.fw.mainmodule.model.MainModel;
 import com.muyunfan.fw.mainmodule.recycler.model.ItemStudentM;
 import com.muyunfan.fw.mainmodule.recycler.provider.ItemStudentProvider;
@@ -22,8 +22,6 @@ import com.muyunfan.fw.widget.utils.common.ToastUtil;
 
 import java.util.ArrayList;
 import java.util.List;
-
-import static android.R.id.list;
 
 /**
  * 类名称：com.muyunfan.fw.mainmodule.presenter

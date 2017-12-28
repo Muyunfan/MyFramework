@@ -1,7 +1,7 @@
 package com.muyunfan.fw.mainmodule.model;
 
-import com.muyunfan.fw.basemodule.model.BaseModel;
-import com.muyunfan.fw.basemodule.network.request.AccountRequest;
+import com.muyunfan.fw.core.model.BaseModel;
+import com.muyunfan.fw.core.network.request.AccountRequest;
 
 /**
  * 类名称：com.muyunfan.fw.mainmodule.model

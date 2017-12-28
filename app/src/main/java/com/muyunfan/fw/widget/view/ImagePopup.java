@@ -12,7 +12,7 @@ import android.widget.PopupWindow;
 
 
 import com.muyunfan.fw.R;
-import com.muyunfan.fw.basemodule.bean.task.ImgBean;
+import com.muyunfan.fw.core.bean.task.ImgBean;
 import com.muyunfan.fw.widget.utils.common.CheckUtil;
 import com.muyunfan.fw.widget.utils.common.CommonUtil;
 import com.muyunfan.fw.widget.utils.common.LogUtil;

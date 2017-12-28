@@ -1,7 +1,7 @@
 package com.muyunfan.fw.widget.view.indicator;
 
 
-import com.muyunfan.fw.basemodule.bean.task.ImgBean;
+import com.muyunfan.fw.core.bean.task.ImgBean;
 
 /**
  * Created by Administrator on 2017/4/25 0025.

@@ -1,6 +1,6 @@
 package com.muyunfan.fw.mainmodule.recycler.model;
 
-import com.muyunfan.fw.basemodule.bean.account.Student;
+import com.muyunfan.fw.core.bean.account.Student;
 
 /**
  * 类名称：com.muyunfan.fw.mainmodule.recycler.model

@@ -4,8 +4,8 @@ import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 
 import com.muyunfan.fw.R;
-import com.muyunfan.fw.basemodule.app.BaseActivity;
-import com.muyunfan.fw.basemodule.bean.EventCenter;
+import com.muyunfan.fw.core.app.BaseActivity;
+import com.muyunfan.fw.core.bean.EventCenter;
 import com.muyunfan.fw.mainmodule.presenter.MainPresenter;
 
 public class MainActivity extends BaseActivity<MainActivity, MainPresenter> {

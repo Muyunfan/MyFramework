@@ -4,7 +4,7 @@ import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.muyunfan.fw.basemodule.bean.task.ImgBean;
+import com.muyunfan.fw.core.bean.task.ImgBean;
 import com.muyunfan.fw.widget.utils.bitmap.GlideUtil;
 import com.muyunfan.fw.widget.view.SmoothImageView;
 

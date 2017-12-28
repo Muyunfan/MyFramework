@@ -4,10 +4,9 @@ import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.content.LocalBroadcastManager;
 import android.text.TextUtils;
 
-import com.muyunfan.fw.basemodule.code.TaskCode;
+import com.muyunfan.fw.core.code.TaskCode;
 import com.muyunfan.fw.mainmodule.ui.MainActivity;
 import com.muyunfan.fw.widget.utils.common.LogUtil;
 
@@ -15,7 +14,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.Iterator;
-import java.util.logging.Logger;
 
 import cn.jpush.android.api.JPushInterface;
 
