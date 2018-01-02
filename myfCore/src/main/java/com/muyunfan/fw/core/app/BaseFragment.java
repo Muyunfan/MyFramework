@@ -150,51 +150,6 @@ public abstract class BaseFragment<F extends Fragment, P extends BaseFPresenter>
         startActivity(intent);
     }
 
-    /**
-     * startActivity
-     *
-     * @param clazz
-     */
-    protected void startActivity(Class<?> clazz) {
-        Intent intent = new Intent(getActivity(), clazz);
-        startActivity(intent);
-    }
-
-    /**
-     * startActivity
-     *
-     * @param clazz
-     */
-    protected void startActivity(Class<?> clazz, String key, int value) {
-        Intent intent = new Intent(getActivity(), clazz);
-        intent.putExtra(key, value);
-        startActivity(intent);
-    }
-
-    /**
-     * startActivity
-     *
-     * @param clazz
-     */
-    protected void startActivity(Class<?> clazz, Bundle bundle) {
-        Intent intent = new Intent(getActivity(), clazz);
-        if (null != bundle) {
-            intent.putExtras(bundle);
-        }
-        startActivity(intent);
-    }
-
-    /**
-     * startActivity
-     *
-     * @param clazz
-     */
-    protected void startActivity(Class<?> clazz, String key, String value) {
-        Intent intent = new Intent(getActivity(), clazz);
-        intent.putExtra(key, value);
-        startActivity(intent);
-    }
-
     public void finishActivity() {
         activity.finish();
     }

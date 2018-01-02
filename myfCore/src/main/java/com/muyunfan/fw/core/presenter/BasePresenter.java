@@ -62,7 +62,7 @@ public abstract class BasePresenter<V extends Activity, M extends BaseModel> imp
 
     @Override
     public void success(final String requestCode, final Object data) {
-        if (getView() != null) {
+        if (isViewAttached()) {
             dismissProgressViewDialog();
             modelCallBackSuccess(requestCode, data);
         }
@@ -70,7 +70,7 @@ public abstract class BasePresenter<V extends Activity, M extends BaseModel> imp
 
     @Override
     public void fail(final String error) {
-        if (getView() != null) {
+        if (isViewAttached()) {
             dismissProgressViewDialog();
             ToastUtil.showShort(error);
         }

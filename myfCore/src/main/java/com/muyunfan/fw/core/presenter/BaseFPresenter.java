@@ -61,7 +61,7 @@ public abstract class BaseFPresenter<F extends Fragment, M extends BaseModel> im
 
     @Override
     public void success(final String requestCode, final Object data) {
-        if (getView() != null) {
+        if (isViewAttached()) {
             dismissProgressViewDialog();
             modelCallBackSuccess(requestCode, data);
         }
@@ -69,7 +69,7 @@ public abstract class BaseFPresenter<F extends Fragment, M extends BaseModel> im
 
     @Override
     public void fail(final String error) {
-        if (getView() != null) {
+        if (isViewAttached()) {
             dismissProgressViewDialog();
             ToastUtil.showShort(error);
         }

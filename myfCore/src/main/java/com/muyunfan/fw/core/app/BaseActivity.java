@@ -192,7 +192,6 @@ public abstract class BaseActivity<V extends AppCompatActivity, T extends BasePr
         return setViewTag();
     }
 
-
     /**
      * progressDialog
      */
@@ -218,7 +217,6 @@ public abstract class BaseActivity<V extends AppCompatActivity, T extends BasePr
         }
 
     }
-
 
     public void dismissProgressViewDialog() {
         try {
@@ -246,30 +244,6 @@ public abstract class BaseActivity<V extends AppCompatActivity, T extends BasePr
         startActivity(intent);
     }
 
-    /**
-     * startActivity
-     *
-     * @param clazz
-     */
-    public void startActivity(Class<?> clazz) {
-        Intent intent = new Intent(getApplicationContext(), clazz);
-        startActivity(intent);
-    }
-
-    /**
-     * startActivity with bundle
-     *
-     * @param clazz
-     * @param bundle
-     */
-    protected void startActivity(Class<?> clazz, Bundle bundle) {
-        Intent intent = new Intent(getApplicationContext(), clazz);
-        if (null != bundle) {
-            intent.putExtras(bundle);
-        }
-        startActivity(intent);
-    }
-
     public void setResult(int resultCode, Class<?> cls) {
         setResult(resultCode, cls, null);
     }
@@ -284,52 +258,6 @@ public abstract class BaseActivity<V extends AppCompatActivity, T extends BasePr
 //        finish();
     }
 
-    /**
-     * startActivity with bundle
-     *
-     * @param clazz
-     * @param
-     */
-    protected void startActivity(Class<?> clazz, String key, String value) {
-        Intent intent = new Intent(getApplicationContext(), clazz);
-        intent.putExtra(key, value);
-        startActivity(intent);
-    }
-
-    /**
-     * startActivity with bundle
-     *
-     * @param clazz
-     * @param
-     */
-    protected void startActivity(Class<?> clazz, String key, boolean value) {
-        Intent intent = new Intent(getApplicationContext(), clazz);
-        intent.putExtra(key, value);
-        startActivity(intent);
-    }
-
-    /**
-     * startActivity then finish
-     *
-     * @param clazz
-     */
-    protected void startActivity(Class<?> clazz, String key, int value) {
-        Intent intent = new Intent(getApplicationContext(), clazz);
-        intent.putExtra(key, value);
-        startActivity(intent);
-    }
-
-    public void startActivityForResult(Class<?> cls, Bundle bundle,
-                                       int requestCode) {
-        Intent intent = new Intent();
-        intent.setClass(getApplicationContext(), cls);
-        intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-        if (bundle != null) {
-            intent.putExtras(bundle);
-        }
-        startActivityForResult(intent, requestCode);
-    }
-
     protected <FV extends View> FV genericFindViewById(int id) {
         return (FV) findViewById(id);
     }
@@ -337,7 +265,7 @@ public abstract class BaseActivity<V extends AppCompatActivity, T extends BasePr
     private void initialize() {
         LogUtil.isDebug = true;
         GlideUtil.getContext(this.getApplicationContext());
-        SharedPreferencesUtil.getInstance("dhx", this.getApplicationContext());
+        SharedPreferencesUtil.getInstance("myf", this.getApplicationContext());
         ToastUtil.register(this.getApplicationContext());
         isInitOver = true;
     }
