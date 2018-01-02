@@ -65,7 +65,7 @@ public class AMapUtil {
         try {
             Intent intent = Intent.getIntent("intent://map/direction?origin=我的位置&destination=" +
                     address +
-                    "&mode=driving&src=嘟会修#Intent;scheme=bdapp;package=com.baidu.BaiduMap;end");
+                    "&mode=driving&src=myf#Intent;scheme=bdapp;package=com.baidu.BaiduMap;end");
             if(isInstallByread("com.baidu.BaiduMap")){
                 context.startActivity(intent);
                 LogUtil.e("百度地图客户端已经安装") ;
