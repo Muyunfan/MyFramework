@@ -18,10 +18,13 @@ import com.muyunfan.fw.R;
  * 修改备注：
  */
 public class ProgressDialog extends Dialog {
+
     private static ProgressDialog mProgressDialog;
+
     private ProgressDialog(Context context, int theme) {
         super(context, theme);
     }
+
     public static ProgressDialog createProgressDialog(Context context) {
         mProgressDialog = new ProgressDialog(context,
                 R.style.SF_pressDialogCustom);
@@ -29,6 +32,7 @@ public class ProgressDialog extends Dialog {
         mProgressDialog.getWindow().getAttributes().gravity = Gravity.CENTER;
         return mProgressDialog;
     }
+
     @Override
     public void onWindowFocusChanged(boolean hasFocus) {
         if (null == mProgressDialog)
