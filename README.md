@@ -293,8 +293,19 @@ public class MainPresenter extends BasePresenter<MainActivity, MainModel> implem
             }
         }, 1000);
     }
-}
-</code></pre>
+}</code></pre>
+
+## 4.2 第三方框架或SDK使用
+
+由于现在各种优秀框架的涌现，个人或者公司项目在开发过程中，难免会引用某个框架，然后嵌入到项目中，但是如果是同类框架进行替换，就会产生一些麻烦，并进行重复的测试工作。（注：此第三方框架类指网络框架等非绑定式框架）
+
+为了避免产生这种情况，所以我更倾向于将第三方框架再做一次封装工作，即将其做出一个工具类。考虑到sdk一般是根据应用生命周期进行注册，注销工作所以可以使用一个生命周期监听接口
+<pre><code>public interface OnLifeCycleListener {
+    void onCreate(Bundle saveState);
+    void onResume();
+    void onPause();
+    void onDestroy();
+}</code></pre>
 
 # 项目成员
 Muyunfan，Zuimenglong
