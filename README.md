@@ -14,7 +14,7 @@
  -  Activity、Fragment、Adapter、View 的子类的成员变量：m开头、驼峰式分词。
  -  方法名：首字母小写，驼峰式分词。
 
-# 1.3 成员变量定义顺序（建议）
+## 1.3 成员变量定义顺序（建议）
 
 - 公用静态常量
 - 公用静态变量
@@ -53,7 +53,7 @@
 
  不要在主线程执行IO或网络的操作 ( 卡顿工具检查主线程的方法时间设置阀值，超过用子线程去执行 )。
 
-# 1.7 非静态匿名内部类请用WeakReference 方式持有外部对象的引用
+## 1.7 非静态匿名内部类请用WeakReference 方式持有外部对象的引用
 
     Runnable timeCallback = new Runnable () {
       if(mRef ! = null) {
@@ -66,7 +66,7 @@
     }
 
 
-# 1.8 长度限制
+## 1.8 长度限制
 
 -  一行代码的长度：不要超过160个字符。
 -  一个方法的长度：不要超过：80行。
@@ -131,9 +131,9 @@ presenter: 业务处理，和Controller的作用是一样的，用于业务处�
 
 ## 3.2 项目结构
 
-项目结构采用模块话结构：basemodule、widget、othermodule...
+项目结构采用模块话结构：core、widget、othermodule...
 
-basemodule：项目核心模块
+core：项目核心模块
 - app：基类Activity、基类Fragment、Application
 - bean：基类数据请求模型、EventBus数据模型、other数据模型
 - cache：应用数据缓存
@@ -155,7 +155,149 @@ widget：通用工具模块
 
 othermodule：各个业务模块需要独立开来，可以引用核心模块、通用模块，尽量避免各个业务模块之间的相互调用（页面启动除外）
 
-### 3.2.1 recyclerview封装使用
+# 4 核心工具
+
+## 4.1 recyclerview封装使用
+
+关于RecyclerView的使用，主要考虑到该控件的自由性，类插件式添加item。既可以使用到list，亦可以替代ScrollView的作用实现滑动,配合SwipeRefreshLayout实现刷新操作
+
+<pre><code>
+public class MainPresenter extends BasePresenter<MainActivity, MainModel> implements OnClickByViewIdListener, SwipeRefreshLayout.OnRefreshListener, LoadMoreFooterModel.LoadMoreListener {
+    @Override
+    protected MainModel createPresenter() {
+        return new MainModel();
+    }
+
+    @Override
+    public String setViewTag() {
+        return getView().getViewTag();
+    }
+
+    private RecyclerAdapter mAdapter;
+    private LinearLayoutManager layoutManager;
+    private Handler handler = new Handler();
+    private LoadMoreFooterModel mLoadMoreFooterModel;
+
+    @Override
+    public void initialize() {
+        initViews();
+        registerModel();
+        initEvent();
+        getStudents();
+    }
+
+    /** 初始化RecyclerView、SwipeRefreshLayout */
+    private void initViews() {
+        mAdapter = new RecyclerAdapter(getView());
+        getView().srlRefresh.setColorSchemeResources(R.color.color_blue, R.color.color_red, R.color.color_green, R.color.color_orange);
+        layoutManager = new LinearLayoutManager(getView());
+        getView().rvRecyclerView.setLayoutManager(layoutManager);
+        getView().rvRecyclerView.setAdapter(mAdapter);
+    }
+
+    /** register item（provider：先布局各个item项，再将各个item注册到RecyclerAdapter） */
+    private void registerModel() {
+        mAdapter.register(ItemStudentM.class, new ItemStudentProvider(getView()));
+        mAdapter.register(LoadMoreFooterModel.class, new LoadMoreFooterViewHolderProvider());
+    }
+
+    private void initEvent() {
+        mLoadMoreFooterModel = new LoadMoreFooterModel();
+        mLoadMoreFooterModel.setLoadMoreListener(this);
+        mAdapter.setOnClickByViewIdListener(this);
+        getView().srlRefresh.setOnRefreshListener(this);
+    }
+
+    /** 数据请求 */
+    private void getStudents() {
+        showProgressViewDialog();
+        getView().srlRefresh.setRefreshing(false);
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                mAdapter.clearData();
+                model.getStudents();
+            }
+        }, 1000);
+    }
+
+    /** 数据请求回调 */
+    @Override
+    public void modelCallBackSuccess(String requestCode, Object data) {
+        switch (requestCode) {
+            case MainModel.GET_STUDENTS:
+                StudentInList studentInList = GsonUtil.fromJson((String) data, StudentInList.class);
+                if (studentInList.students != null) {
+                    dataFilter(studentInList.students);
+                }
+                break;
+        }
+    }
+
+    /** 过滤用户信息 */
+    private List<ItemStudentM> itemList;
+    private void dataFilter(List<Student> studentList) {
+        itemList = new ArrayList<>();
+        for (Student student : studentList) {
+            ItemStudentM model = new ItemStudentM();
+            model.student = student;
+            itemList.add(model);
+        }
+        updateData();
+    }
+
+    /** 是否有下一页判断标识（以接口数据回调为准） */
+    private boolean hasMore;
+    /** 更新数据 */
+    private void updateData() {
+        getView().runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if (itemList.size() < 10) {
+                    hasMore = false;
+                    mAdapter.addData(itemList);
+                    mAdapter.removeFooter(mLoadMoreFooterModel);
+                } else if (itemList.size() >= 10) {
+                    hasMore = true;
+                    mAdapter.addData(itemList);
+                    mAdapter.addFooter(mLoadMoreFooterModel);
+                }
+            }
+        });
+    }
+
+
+    /** 点击事件及事件处理 */
+    @Override
+    public void clickByViewId(View view, Object o, int position) {
+        ToastUtil.showShort(((ItemStudentM) o).student.name);
+    }
+
+
+    /** 列表刷新 */
+    @Override
+    public void onRefresh() {
+        getStudents();
+    }
+
+    /** 上拉加载更多 */
+    @Override
+    public void onLoadMore() {
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                if (hasMore) {
+                    mLoadMoreFooterModel.canLoadMore();
+                    model.getStudents();
+                }
+            }
+        }, 1000);
+    }
+}
+</code></pre>
 
 # 项目成员
 Muyunfan，Zuimenglong
+
+# 更新时间
+2018年1月2日10:19:35
