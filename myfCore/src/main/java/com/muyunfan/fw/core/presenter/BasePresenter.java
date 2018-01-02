@@ -24,7 +24,6 @@ import java.lang.ref.WeakReference;
  */
 public abstract class BasePresenter<V extends Activity, M extends BaseModel> implements ModelCallBack {
 
-    protected final static int PAGE_SIZE = 10;
     protected WeakReference<V> mWeakReference;
     protected M model;
     protected TimeCount timeCountProgress;
@@ -64,26 +63,16 @@ public abstract class BasePresenter<V extends Activity, M extends BaseModel> imp
     @Override
     public void success(final String requestCode, final Object data) {
         if (getView() != null) {
-            getView().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    dismissProgressViewDialog();
-                    modelCallBackSuccess(requestCode, data);
-                }
-            });
+            dismissProgressViewDialog();
+            modelCallBackSuccess(requestCode, data);
         }
     }
 
     @Override
     public void fail(final String error) {
         if (getView() != null) {
-            getView().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    dismissProgressViewDialog();
-                    ToastUtil.showShort(error);
-                }
-            });
+            dismissProgressViewDialog();
+            ToastUtil.showShort(error);
         }
     }
 

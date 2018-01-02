@@ -35,8 +35,7 @@ public class Platform
             {
                 return new Android();
             }
-        } catch (ClassNotFoundException ignored)
-        {
+        } catch (ClassNotFoundException ignored) {
         }
         return new Platform();
     }

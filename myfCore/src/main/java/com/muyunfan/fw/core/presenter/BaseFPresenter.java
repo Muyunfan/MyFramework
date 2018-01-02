@@ -22,9 +22,8 @@ import java.lang.ref.WeakReference;
  * 修改时间：2017/5/25.11:09
  * 修改备注：
  */
-public abstract class BaseFPresenter <F extends Fragment, M extends BaseModel> implements ModelCallBack {
+public abstract class BaseFPresenter<F extends Fragment, M extends BaseModel> implements ModelCallBack {
 
-    protected final static int PAGE_SIZE = 10;
     protected WeakReference<F> mWeakReference;
     protected M model;
     protected TimeCount timeCountProgress;
@@ -63,26 +62,16 @@ public abstract class BaseFPresenter <F extends Fragment, M extends BaseModel> i
     @Override
     public void success(final String requestCode, final Object data) {
         if (getView() != null) {
-            getView().getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    dismissProgressViewDialog();
-                    modelCallBackSuccess(requestCode, data);
-                }
-            });
+            dismissProgressViewDialog();
+            modelCallBackSuccess(requestCode, data);
         }
     }
 
     @Override
     public void fail(final String error) {
         if (getView() != null) {
-            getView().getActivity().runOnUiThread(new Runnable() {
-                @Override
-                public void run() {
-                    dismissProgressViewDialog();
-                    ToastUtil.showShort(error);
-                }
-            });
+            dismissProgressViewDialog();
+            ToastUtil.showShort(error);
         }
     }
 
@@ -132,7 +121,7 @@ public abstract class BaseFPresenter <F extends Fragment, M extends BaseModel> i
      * progressDialog
      */
     public void showProgressViewDialog() {
-        if(!isViewAttached()){
+        if (!isViewAttached()) {
             return;
         }
         if (null == mProgressView)
@@ -159,7 +148,7 @@ public abstract class BaseFPresenter <F extends Fragment, M extends BaseModel> i
 
 
     public void dismissProgressViewDialog() {
-        if(!isViewAttached()){
+        if (!isViewAttached()) {
             return;
         }
         try {

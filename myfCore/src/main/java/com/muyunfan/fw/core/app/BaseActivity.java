@@ -26,7 +26,7 @@ import android.view.inputmethod.InputMethodManager;
 import com.muyunfan.fw.R;
 import com.muyunfan.fw.core.bean.EventCenter;
 import com.muyunfan.fw.core.code.APICode;
-import com.muyunfan.fw.core.code.AccountCode;
+import com.muyunfan.fw.core.code.ActionCode;
 import com.muyunfan.fw.core.presenter.BasePresenter;
 import com.muyunfan.fw.widget.bar.StatusBarCompat;
 import com.muyunfan.fw.widget.dialog.ProgressDialog;
@@ -181,7 +181,7 @@ public abstract class BaseActivity<V extends AppCompatActivity, T extends BasePr
     public void onEventMainThread(EventCenter event) {
         if ((APICode.ERROR + setViewTag()).contains(event.getEventCode())) {
             ToastUtil.showShort((String) event.getData());
-        } else if(AccountCode.FINISH_APP.equals(event.getEventCode())){
+        } else if(ActionCode.ACTION_FINISH.equals(event.getEventCode())){
             finish();
         }else{
             eventThread(event);

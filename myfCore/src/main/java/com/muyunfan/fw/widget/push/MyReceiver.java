@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 
-import com.muyunfan.fw.core.code.TaskCode;
 import com.muyunfan.fw.mainmodule.ui.MainActivity;
 import com.muyunfan.fw.widget.utils.common.LogUtil;
 
@@ -47,7 +46,6 @@ public class MyReceiver extends BroadcastReceiver {
 				LogUtil.d(TAG, "[MyReceiver] 用户点击打开了通知");
 				//打开自定义的Activity
 				Intent i = new Intent(context, MainActivity.class);
-				bundle.putBoolean(TaskCode.NEW_TASK,true);
 				i.putExtras(bundle);
 				//i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				i.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP );

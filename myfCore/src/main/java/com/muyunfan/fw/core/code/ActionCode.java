@@ -10,4 +10,10 @@ package com.muyunfan.fw.core.code;
  * 修改备注：
  */
 public class ActionCode {
+
+    /** 操作刷新 */
+    public static final String ACTION_REFRESH = "actionRefresh";
+    /** 操作关闭 */
+    public static final String ACTION_FINISH = "actionFinish";
+
 }
