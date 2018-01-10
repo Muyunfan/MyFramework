@@ -55,11 +55,13 @@
         <service android:name="com.amap.api.location.APSService" />
 
         <activity android:name=".mainmodule.ui.MainActivity">
-            <!--<intent-filter>-->
-                <!--<action android:name="android.intent.action.MAIN" />-->
 
-                <!--<category android:name="android.intent.category.LAUNCHER" />-->
-            <!--</intent-filter>-->
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
 
         <!-- Required SDK核心功能 -->
@@ -145,6 +147,8 @@
         </receiver>
 
         <activity android:name=".mainmodule.ui.AnnotationActivity">
+        </activity>
+        <activity android:name=".codermodule.ViewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
